@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm8tqlhnfiug5"]
+
+[ext_resource type="Script" path="res://Scripts/Settings Lib/UI/option_button_setting.gd" id="1_bow7c"]
+[ext_resource type="Script" path="res://Scripts/Settings Lib/setting.gd" id="2_a0vib"]
+
+[node name="OptionButton Setting" type="OptionButton"]
+offset_right = 14.0
+offset_bottom = 20.0
+script = ExtResource("1_bow7c")
+
+[node name="Setting" type="Node" parent="."]
+script = ExtResource("2_a0vib")
+
+[connection signal="item_selected" from="." to="." method="_on_item_selected"]
+[connection signal="value_loaded" from="Setting" to="." method="_on_setting_value_loaded"]

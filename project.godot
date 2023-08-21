@@ -1,0 +1,36 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Server Launcher"
+run/main_scene="res://Scenes/main.tscn"
+config/features=PackedStringArray("4.1", "C#", "Forward Plus")
+run/low_processor_mode=true
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+config/icon="res://icon.svg"
+
+[autoload]
+
+Log="*res://Scenes/Singletons/logger.tscn"
+
+[display]
+
+window/subwindows/embed_subwindows=false
+
+[dotnet]
+
+project/assembly_name="Server Launcher"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"

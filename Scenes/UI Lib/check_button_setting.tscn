@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://gx6vrnj2ip3"]
+
+[ext_resource type="Script" path="res://Scripts/Settings Lib/UI/check_button_setting.gd" id="1_57crp"]
+[ext_resource type="Script" path="res://Scripts/Settings Lib/setting.gd" id="1_tufsv"]
+
+[node name="CheckButton Setting" type="CheckButton"]
+offset_right = 44.0
+offset_bottom = 24.0
+script = ExtResource("1_57crp")
+
+[node name="Setting" type="Node" parent="."]
+script = ExtResource("1_tufsv")
+
+[connection signal="toggled" from="." to="." method="_on_toggled"]
+[connection signal="value_loaded" from="Setting" to="." method="_on_setting_value_loaded"]

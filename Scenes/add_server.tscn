@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvfhnveogxoho"]
+
+[ext_resource type="Texture2D" uid="uid://dmxg3d6vy34lk" path="res://Assets/Plus.png" id="1_ibsck"]
+[ext_resource type="Script" path="res://Scripts/add_server.gd" id="1_vutag"]
+
+[node name="Add Server" type="MarginContainer"]
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_vutag")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+icon = ExtResource("1_ibsck")
+icon_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,132 @@
+[gd_scene load_steps=9 format=3 uid="uid://dynr7eydnm314"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_qh816"]
+[ext_resource type="Script" path="res://Scripts/server_settings.gd" id="2_08toi"]
+[ext_resource type="Theme" uid="uid://cf86ec77yy1vg" path="res://Assets/new_theme.tres" id="2_s0e2w"]
+[ext_resource type="LabelSettings" uid="uid://byctkgngv3ysc" path="res://Assets/title_label_format.tres" id="3_m3ldd"]
+[ext_resource type="PackedScene" uid="uid://dvfhnveogxoho" path="res://Scenes/add_server.tscn" id="5_1a6kc"]
+[ext_resource type="PackedScene" uid="uid://gx6vrnj2ip3" path="res://Scenes/UI Lib/check_button_setting.tscn" id="6_hm1ri"]
+[ext_resource type="PackedScene" uid="uid://ctoft6x7ied3l" path="res://Scenes/UI Lib/setting_label.tscn" id="7_qficx"]
+[ext_resource type="PackedScene" uid="uid://bal0q2iabufe5" path="res://Scenes/UI Lib/file_dialog_setting.tscn" id="8_a7inn"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_qh816")
+_settings_and_groups = Array[NodePath]([NodePath("Servers Manager"), NodePath("V Box/MarginContainer/Main Application Tabs/Settings/Settings/Settings/Java Path/FileDialog Setting"), NodePath("V Box/MarginContainer/Main Application Tabs/Settings/Settings/Settings/Save Path/FileDialog Setting"), NodePath("V Box/MarginContainer/Main Application Tabs/Settings/Settings/Settings/Custom Commands/CheckButton Setting")])
+
+[node name="Servers Manager" type="Node" parent="." node_paths=PackedStringArray("_servers_parent", "_servers_settings_parent")]
+script = ExtResource("2_08toi")
+_servers_parent = NodePath("../V Box/MarginContainer/Main Application Tabs/Servers/Servers/Servers Parent")
+_servers_settings_parent = NodePath("../V Box/MarginContainer/Main Application Tabs/Server Settings/Server Settings/Server Settings")
+_key = "Servers"
+
+[node name="Backround" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27451, 0.27451, 0.27451, 1)
+
+[node name="V Box" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="V Box"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_s0e2w")
+text = "Server Manager"
+label_settings = ExtResource("3_m3ldd")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="V Box"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Main Application Tabs" type="TabContainer" parent="V Box/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Servers" type="MarginContainer" parent="V Box/MarginContainer/Main Application Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="Servers" type="ScrollContainer" parent="V Box/MarginContainer/Main Application Tabs/Servers"]
+layout_mode = 2
+
+[node name="Servers Parent" type="HBoxContainer" parent="V Box/MarginContainer/Main Application Tabs/Servers/Servers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Server Settings" type="MarginContainer" parent="V Box/MarginContainer/Main Application Tabs"]
+layout_mode = 2
+
+[node name="Server Settings" type="ScrollContainer" parent="V Box/MarginContainer/Main Application Tabs/Server Settings"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Server Settings" type="HBoxContainer" parent="V Box/MarginContainer/Main Application Tabs/Server Settings/Server Settings"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Add Server" parent="V Box/MarginContainer/Main Application Tabs/Server Settings/Server Settings/Server Settings" instance=ExtResource("5_1a6kc")]
+layout_mode = 2
+
+[node name="Settings" type="MarginContainer" parent="V Box/MarginContainer/Main Application Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="Settings" type="ScrollContainer" parent="V Box/MarginContainer/Main Application Tabs/Settings"]
+layout_mode = 2
+
+[node name="Settings" type="VBoxContainer" parent="V Box/MarginContainer/Main Application Tabs/Settings/Settings"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Java Path" parent="V Box/MarginContainer/Main Application Tabs/Settings/Settings/Settings" instance=ExtResource("7_qficx")]
+layout_mode = 2
+label = "Java Path"
+
+[node name="FileDialog Setting" parent="V Box/MarginContainer/Main Application Tabs/Settings/Settings/Settings/Java Path" instance=ExtResource("8_a7inn")]
+layout_mode = 2
+size_flags_horizontal = 3
+setting_key = "java_path"
+filters = PackedStringArray("java.exe; JAVA Executable")
+
+[node name="Save Path" parent="V Box/MarginContainer/Main Application Tabs/Settings/Settings/Settings" instance=ExtResource("7_qficx")]
+layout_mode = 2
+label = "Run Save Location"
+
+[node name="FileDialog Setting" parent="V Box/MarginContainer/Main Application Tabs/Settings/Settings/Settings/Save Path" instance=ExtResource("8_a7inn")]
+layout_mode = 2
+size_flags_horizontal = 3
+setting_key = "save_path"
+file_mode = 2
+
+[node name="Custom Commands" parent="V Box/MarginContainer/Main Application Tabs/Settings/Settings/Settings" instance=ExtResource("7_qficx")]
+layout_mode = 2
+label = "Enable Custom Commands"
+
+[node name="CheckButton Setting" parent="V Box/MarginContainer/Main Application Tabs/Settings/Settings/Settings/Custom Commands" instance=ExtResource("6_hm1ri")]
+layout_mode = 2
+setting_key = "use_custom_commands"
+
+[connection signal="add_server" from="V Box/MarginContainer/Main Application Tabs/Server Settings/Server Settings/Server Settings/Add Server" to="Servers Manager" method="add_server"]
