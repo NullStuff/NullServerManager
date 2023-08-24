@@ -1,0 +1,6 @@
+[submodule "addons/NullSettings"]
+	path = addons/NullSettings
+	url = https://github.com/NullStuff/NullSettings
+[submodule "addons/NullLogger"]
+	path = addons/NullLogger
+	url = https://github.com/NullStuff/NullLogger
