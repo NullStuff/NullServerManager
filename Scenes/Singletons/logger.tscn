@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://da5wg0wg4d4ls"]
-
-[ext_resource type="Script" path="res://Scripts/Logger/logger.gd" id="1_xymbr"]
-
-[node name="Logger" type="Node"]
-script = ExtResource("1_xymbr")

@@ -1,13 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://kn1iv66pfog1"]
+[gd_scene load_steps=2 format=3 uid="uid://kn1iv66pfog1"]
 
 [ext_resource type="Script" path="res://Scripts/server_settings_gui.gd" id="1_45ljf"]
-[ext_resource type="Script" path="res://Scripts/Settings Lib/settings_group.gd" id="2_7ncsv"]
-[ext_resource type="PackedScene" uid="uid://b7ppolpkrl3lk" path="res://Scenes/UI Lib/line_edit_setting.tscn" id="3_ovc1q"]
-[ext_resource type="PackedScene" uid="uid://ctoft6x7ied3l" path="res://Scenes/UI Lib/setting_label.tscn" id="4_h6ww3"]
-[ext_resource type="PackedScene" uid="uid://bal0q2iabufe5" path="res://Scenes/UI Lib/file_dialog_setting.tscn" id="5_3crcm"]
-[ext_resource type="PackedScene" uid="uid://dkjgx2dxbvebu" path="res://Scenes/UI Lib/spin_box_setting.tscn" id="5_vaja4"]
-[ext_resource type="PackedScene" uid="uid://dm8tqlhnfiug5" path="res://Scenes/UI Lib/option_button_setting.tscn" id="6_lvsn5"]
-[ext_resource type="PackedScene" uid="uid://gx6vrnj2ip3" path="res://Scenes/UI Lib/check_button_setting.tscn" id="7_1lwni"]
 
 [node name="Server Settings GUI" type="VBoxContainer"]
 custom_minimum_size = Vector2(340, 0)
@@ -17,80 +10,9 @@ script = ExtResource("1_45ljf")
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="LineEdit Setting" parent="HBoxContainer" instance=ExtResource("3_ovc1q")]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-placeholder_text = "Enter a Server Name"
-setting_key = "name"
-
 [node name="CloseButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "x"
-
-[node name="jar Path" parent="." instance=ExtResource("4_h6ww3")]
-layout_mode = 2
-label = "Server jar Path"
-
-[node name="FileDialog Setting" parent="jar Path" instance=ExtResource("5_3crcm")]
-layout_mode = 2
-size_flags_horizontal = 3
-setting_key = "jar_path"
-filters = PackedStringArray("*.jar; JAR File")
-
-[node name="RAM" parent="." instance=ExtResource("4_h6ww3")]
-layout_mode = 2
-label = "RAM"
-
-[node name="RAM Fields" type="HBoxContainer" parent="RAM"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="SpinBox Setting" parent="RAM/RAM Fields" instance=ExtResource("5_vaja4")]
-layout_mode = 2
-size_flags_horizontal = 3
-min_value = 1.0
-max_value = 131072.0
-value = 1024.0
-rounded = true
-allow_greater = true
-setting_key = "ram_amount"
-
-[node name="OptionButton Setting" parent="RAM/RAM Fields" instance=ExtResource("6_lvsn5")]
-layout_mode = 2
-item_count = 2
-selected = 0
-popup/item_0/text = "MB"
-popup/item_0/id = 0
-popup/item_1/text = "GB"
-popup/item_1/id = 1
-setting_key = "ram_unit"
-
-[node name="Custom Args Enable" parent="." instance=ExtResource("4_h6ww3")]
-layout_mode = 2
-label = "Use Custom Arguments"
-
-[node name="CheckButton Setting" parent="Custom Args Enable" instance=ExtResource("7_1lwni")]
-layout_mode = 2
-setting_key = "use_custom_args"
-
-[node name="Custom Args" parent="." instance=ExtResource("4_h6ww3")]
-layout_mode = 2
-label = "Custom Arguments"
-
-[node name="LineEdit Setting" parent="Custom Args" instance=ExtResource("3_ovc1q")]
-layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Placeholders will populate based on above settings.
-
-Available placeholders:
-{Ram} - Will fill the selected ram amount and unit.
-{Jar} - Will fill the selected jar file path. *Note that this placeholder does not include the '-jar' flag!*"
-setting_key = "custom_args"
-
-[node name="SettingsGroup" type="Node" parent="."]
-script = ExtResource("2_7ncsv")
-_settings_and_groups = Array[NodePath]([NodePath("../HBoxContainer/LineEdit Setting"), NodePath("../jar Path/FileDialog Setting"), NodePath("../RAM/RAM Fields/SpinBox Setting"), NodePath("../RAM/RAM Fields/OptionButton Setting"), NodePath("../Custom Args Enable/CheckButton Setting"), NodePath("../Custom Args/LineEdit Setting")])
 
 [connection signal="pressed" from="HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
