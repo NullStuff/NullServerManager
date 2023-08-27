@@ -1,19 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dynr7eydnm314"]
+[gd_scene load_steps=6 format=3 uid="uid://dynr7eydnm314"]
 
+[ext_resource type="Script" path="res://addons/NullSettings/scripts/settings_file.gd" id="1_twvfv"]
 [ext_resource type="Script" path="res://Scripts/server_settings.gd" id="2_08toi"]
 [ext_resource type="Theme" uid="uid://cf86ec77yy1vg" path="res://Assets/new_theme.tres" id="2_s0e2w"]
 [ext_resource type="LabelSettings" uid="uid://byctkgngv3ysc" path="res://Assets/title_label_format.tres" id="3_m3ldd"]
 [ext_resource type="PackedScene" uid="uid://dvfhnveogxoho" path="res://Scenes/add_server.tscn" id="5_1a6kc"]
 
-[node name="Main" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Main" type="Node"]
+script = ExtResource("1_twvfv")
+_settings_and_groups = Array[NodePath]([NodePath("Servers Manager")])
 
 [node name="Servers Manager" type="Node" parent="." node_paths=PackedStringArray("_servers_parent", "_servers_settings_parent")]
 script = ExtResource("2_08toi")
@@ -22,7 +17,6 @@ _servers_settings_parent = NodePath("../V Box/MarginContainer/Main Application T
 _key = "Servers"
 
 [node name="Backround" type="ColorRect" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -31,7 +25,6 @@ grow_vertical = 2
 color = Color(0.27451, 0.27451, 0.27451, 1)
 
 [node name="V Box" type="VBoxContainer" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

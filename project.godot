@@ -19,6 +19,10 @@ boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
+[autoload]
+
+NullLogger="*res://addons/NullLogger/scripts/null_logger.gd"
+
 [display]
 
 window/subwindows/embed_subwindows=false
@@ -26,6 +30,10 @@ window/subwindows/embed_subwindows=false
 [dotnet]
 
 project/assembly_name="Server Launcher"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/NullLogger/plugin.cfg", "res://addons/NullSettings/plugin.cfg")
 
 [rendering]
 
