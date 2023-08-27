@@ -50,7 +50,6 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Servers" type="MarginContainer" parent="V Box/MarginContainer/Main Application Tabs"]
-visible = false
 layout_mode = 2
 
 [node name="Servers" type="ScrollContainer" parent="V Box/MarginContainer/Main Application Tabs/Servers"]
@@ -79,6 +78,7 @@ size_flags_vertical = 3
 layout_mode = 2
 
 [node name="Settings" type="MarginContainer" parent="V Box/MarginContainer/Main Application Tabs"]
+visible = false
 layout_mode = 2
 
 [node name="Settings" type="ScrollContainer" parent="V Box/MarginContainer/Main Application Tabs/Settings"]
