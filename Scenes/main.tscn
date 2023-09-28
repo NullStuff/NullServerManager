@@ -44,12 +44,17 @@ autowrap_mode = 2
 [node name="MarginContainer" type="MarginContainer" parent="V Box"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
 
 [node name="Main Application Tabs" type="TabContainer" parent="V Box/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Servers" type="MarginContainer" parent="V Box/MarginContainer/Main Application Tabs"]
+visible = false
 layout_mode = 2
 
 [node name="Servers" type="ScrollContainer" parent="V Box/MarginContainer/Main Application Tabs/Servers"]
@@ -61,7 +66,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Server Settings" type="MarginContainer" parent="V Box/MarginContainer/Main Application Tabs"]
-visible = false
 layout_mode = 2
 
 [node name="Server Settings" type="ScrollContainer" parent="V Box/MarginContainer/Main Application Tabs/Server Settings"]
@@ -80,6 +84,10 @@ layout_mode = 2
 [node name="Settings" type="MarginContainer" parent="V Box/MarginContainer/Main Application Tabs"]
 visible = false
 layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
 
 [node name="Settings" type="ScrollContainer" parent="V Box/MarginContainer/Main Application Tabs/Settings"]
 layout_mode = 2
