@@ -3,11 +3,12 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
+using Godot;
 
 
 public class ServerProcess
 {
-	private Process _process;
+	private Process process;
 
 	private string _arguments;
     public string Arguments {
@@ -19,19 +20,20 @@ public class ServerProcess
 	}
 
 	private string _workingDir;
-	public string WorkingDir { 
+	public string WorkingDir {
 		get {
 			return _workingDir;
 		}
 		set{
-			if (Path.) {
-
-			}
+			_workingDir = value;
 		}
 	}
 
 	private string _javaPath;
 	public string JavaPath { get; set; }
+
+	private string _savePath;
+	public string SavePath { get; set; }
 
 	public event EventHandler ServerStartedEvent;
     public event EventHandler ServerReadyEvent;
@@ -97,6 +99,11 @@ public class ServerProcess
 		process.BeginErrorReadLine();
 
 		// GD.Print("owo");
+		ServerStartedEvent handler = ThresholdReached;
+		if (handler != null)
+            {
+                handler(this, e);
+        }
 		EmitSignal(SignalName.ServerStarted);
 	}
 
@@ -135,7 +142,7 @@ public class ServerProcess
 
 	public void DeleteWorld() {
 		if (!ServerIsRunning()) {
-			Directory.Delete(workingDir + "\\world\\", true);
+			Directory.Delete(_workingDir + "\\world\\", true);
 			SendServerOutput("World deleted");
 		} else {
 			GD.PrintErr("Server Running, can't delete world!");
@@ -147,13 +154,13 @@ public class ServerProcess
 		DateTime time = DateTime.Now;
 		GD.Print("It is now: " + time);
 		string timeStr = time.ToString("yyyy_dd_M-HH_mm_ss");
-		string filePath = savePath + "\\Run-" + timeStr;
+		string filePath = _savePath + "\\Run-" + timeStr;
 
-		GD.Print("Creating Zip of " + workingDir + "world" + " in " + filePath);
+		GD.Print("Creating Zip of " + _workingDir + "world" + " in " + filePath);
 
-		ZipFile.CreateFromDirectory(workingDir + "world", filePath + ".zip");
+		ZipFile.CreateFromDirectory(_workingDir + "world", filePath + ".zip");
 		GD.Print("Copying log to " + filePath);
-		File.Copy(workingDir + "logs\\latest.log", filePath + ".log");
+		File.Copy(_workingDir + "logs\\latest.log", filePath + ".log");
 
 		SendServerOutput("Run zipped.");
 	}
